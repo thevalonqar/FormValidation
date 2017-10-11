@@ -1,0 +1,39 @@
+/*   CIS 131 - W01
+  Boostrap Validation
+  styles.css
+
+  James McAdoo
+  10/08/17
+  */
+
+  /* reset styles*/
+    html {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    /* Fonts */
+    h1{
+      font-family: 'Abril Fatface', cursive;
+    }
+
+    p, label {
+      font-family: 'Droid Sans', sans-serif;
+    }
+
+    /* Styles */
+  .form-check-label {
+    padding: 10px;
+    font-weight: 500;
+  }
+
+  #error {
+    display: none;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  /*#name {
+    background-color: red;
+  }*/

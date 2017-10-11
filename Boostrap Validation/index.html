@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<!--
+      CIS 131 - W01
+      Boostrap Validation
+      index.html
+
+      James McAdoo
+      10/08/17
+-->
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Validation</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+
+    <!-- Stylesheet  -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Droid+Sans" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <!-- Header -->
+   <div class="container">
+       <div class="jumbotron">
+           <h1>Bootstrap Validation</h1>
+           <p>Did you fill out the form correctly?</p>
+       </div>
+   </div>
+
+   <!-- Error Message  -->
+
+    <div class="container" id="error">
+       <p>There is an error.</p>
+    </div>
+
+
+   <!-- Form  -->
+   <form class="container">
+     <div class="form-group col-md-6">
+         <label for="Name">Full Name:</label>
+          <input type="text" class="form-control" id="name" >
+      </div>
+      <div class="form-group col-md-6">
+         <label for="Name">Phone Number:</label>
+        <input type="number" class="form-control" id="phone" >
+      </div>
+     <div class="form-group col-md-12">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email">
+     </div>
+     <div class="form-group col-md-12">
+        <label for="Select">Are you a:</label>
+        <select class="form-control" id="select">
+          <option></option>
+         <option>Business</option>
+         <option>Personal</option>
+         <option>Third thing</option>
+       </select>
+     </div>
+     <fieldset class="form-group col-sm-12">
+       <label for="radios">How Did You Hear About Us?</label>
+        <div class="form-check form-check-inline">
+          <label for="radio" class="form-check-label">
+            <input type="radio" name="selection" class="form-check-input" id="radio1">Facebook
+          </label>
+          <label for="radio" class="form-check-label">
+            <input type="radio" name="selection" class="form-check-input" id="radio2">Billboard
+          </label>
+          <label for="radio" class="form-check-label">
+            <input type="radio" name="selection" class="form-check-input" id="radio3">Something Else
+          </label>
+          <label for="radio" class="form-check-label">
+            <input type="radio" name="selection" class="form-check-input" id="radio4">Fourth Thing
+          </label>
+      </div>
+      <div class="form-group">
+          <button type="button" class="btn btn-default" onclick="submitForm()">Submit</button>
+      </div>
+    </fieldset>
+
+   </form>
+
+    <!-- External Javascript  -->
+     <script src="index.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
