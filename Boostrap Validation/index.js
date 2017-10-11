@@ -9,99 +9,126 @@
     var errorMessage = document.getElementById('error');
 
     function submitForm() {
-      checkRadio();
-      // checkName();
-      checkEmail();
-      checkPhoneNumber();
-      checkBlanks();
+      resetPageErrors();
+
+      var fields_entered = checkBlanks();
+      if(fields_entered == false) {
+        errorMessage.innerHTML = "required fields are missing";
+        errorMessage.style.display = 'block';
+
+        return false;
+      }
+
+      var name_valid = checkName();
+      if(name_valid == false) {
+        errorMessage.innerHTML = "Name must be at least 6 characters.";
+        errorMessage.style.display = 'block';
+
+        return false
+      }
+
+      var phone_valid = checkPhoneNumber();
+      if(phone_valid == false) {
+        errorMessage.innerHTML = "Please enter a valid phone number.";
+        errorMessage.style.display = 'block';
+
+        return false
+      }
+
+      var email_valid = checkEmail();
+      if(email_valid == false) {
+        errorMessage.innerHTML = "Please enter a valid email.";
+        errorMessage.style.display = 'block';
+
+        return false
+      }
+
+      var radio_checked = checkRadio();
+      if(radio_checked == false) {
+        errorMessage.innerHTML = "Please select how you heard about us.";
+        errorMessage.style.display = 'block';
+
+        return false
+      }
+
+      return true;
+    }
+
+    function resetPageErrors() {
+      errorMessage.style.display = 'none';
+      document.getElementById('name').style.backgroundColor = "white";
+      document.getElementById('email').style.backgroundColor = "white";
+      document.getElementById('phone').style.backgroundColor = "white";
     }
 
     function checkBlanks() {
-      var n = document.getElementById('name').value;
-      var email = document.getElementById('email').value;
-      if (n == "" ){
-        errorMessage.innerHTML = "required fields are missing";
-        errorMessage.style.display = 'block';
+      var nameBlank = document.getElementById('name').value == ""
+      var emailBlank = document.getElementById('email').value == ""
+      if (nameBlank && emailBlank) {
         document.getElementById('name').style.backgroundColor = "#fba3b4";
+        document.getElementById('email').style.backgroundColor = "#fba3b4";
+        return false;
       }
-      else {
-        checkName();
-        // errorMessage.style.display = 'none';
-        // document.getElementById('name').style.backgroundColor = "white";
+      if (nameBlank) {
+        document.getElementById('name').style.backgroundColor = "#fba3b4";
+        return false;
       }
-        if (email == "" ){
-          errorMessage.innerHTML = "required fields are missing";
-          errorMessage.style.display = 'block';
-          document.getElementById('email').style.backgroundColor = "#fba3b4";
-        }
-        else {
-          errorMessage.style.display = 'none';
-          document.getElementById('email').style.backgroundColor = "white";
-        }
 
+      if(emailBlank) {
+        document.getElementById('email').style.backgroundColor = "#fba3b4";
+        return false;
+      }
+      return true;
     }
 
     function checkName() {
-      var string = document.getElementById('name').value;
-      var nPattern = /.{6,}/;
-      if(nPattern.test(string) == true){
-        errorMessage.style.display = 'none';
-        document.getElementById('name').style.backgroundColor = "white";
-
+      if (document.getElementById('name').value.length < 6) {
+        document.getElementById('name').style.backgroundColor = "#fba3b4";
+        return false;
       }
-      else{
-          errorMessage.innerHTML = "Name must be at least 6 characters";
-          errorMessage.style.display = 'block';
-          document.getElementById('name').style.backgroundColor = "#fba3b4";
-      }
+      return true;
     }
 
-  function checkPhoneNumber() {
-    var number = document.getElementById('phone').value;
-    // Don't know why ^\d{3}[-]\d{3}[-]\d{4}$ isn't working :/
-    var phPattern = /\d{10}|\d{7}/;
-    var result = phPattern.test(number);
-      if(phPattern.test(number) == true){
-        errorMessage.style.display = 'none';
-        document.getElementById('phone').style.backgroundColor = "white";
+    function checkPhoneNumber() {
+      var phPattern = /\d{10}|\d{7}/;
+      var result = phPattern.test(document.getElementById('phone').value);
 
-      }
-      else{
-        errorMessage.innerHTML = "Must enter valid phone number";
-        errorMessage.style.display = 'block';
+      if(!result) {
         document.getElementById('phone').style.backgroundColor = "#fba3b4";
+        return false;
       }
-  }
-
-  function checkEmail() {
-    var input = document.getElementById('email').value;
-    var ePattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-    if (ePattern.test(input) == true) {
-        errorMessage.style.display = 'none';
-        document.getElementById('email').style.backgroundColor = "white";
-
+      return true;
     }
-    else{
-      errorMessage.innerHTML = "Incorrect email format";
-      errorMessage.style.display = 'block';
-      document.getElementById('email').style.backgroundColor = "#fba3b4";
+
+    function checkEmail() {
+      var input = document.getElementById('email').value;
+      var ePattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+      if (ePattern.test(input) == false) {
+        document.getElementById('email').style.backgroundColor = "#fba3b4";
+        return false;
+      }
+
+      return true;
     }
-  }
 
-  function checkRadio() {
-    var radioOne = document.getElementById('radio1').checked;
-    var radioTwo = document.getElementById('radio2').checked;
-    var radioThree = document.getElementById('radio3').checked;
-    var radioFour = document.getElementById('radio4').checked;
+    function checkRadio() {
+      var radioOne = document.getElementById('radio1').checked;
+      var radioTwo = document.getElementById('radio2').checked;
+      var radioThree = document.getElementById('radio3').checked;
+      var radioFour = document.getElementById('radio4').checked;
 
-    if (radioOne == false && radioTwo == false &&
-        radioThree == false && radioFour == false){
-            errorMessage.innerHTML = "Please select one:";
-            errorMessage.style.display = 'block';
+      if (radioOne == false && radioTwo == false &&
+          radioThree == false && radioFour == false){
+              return false;
+          }
 
-        }
-    else {
-        errorMessage.style.display = 'none';
+      return true;
     }
-  }
+
+    function parseUrlForVariable() {
+     var parameters = window.location.search.substring(1);
+     var splitParams = parameters.split('&');
+
+     document.getElementById('info').innerHTML = parameters;
+    }

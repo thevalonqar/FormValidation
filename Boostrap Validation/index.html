@@ -47,20 +47,19 @@
        <p>There is an error.</p>
     </div>
 
-
    <!-- Form  -->
-   <form class="container">
+   <form class="container" action="thankyou.html" method="GET" onsubmit="return submitForm()">
      <div class="form-group col-md-6">
          <label for="Name">Full Name:</label>
-          <input type="text" class="form-control" id="name" >
+         <input type="text" class="form-control" id="name" name="name">
       </div>
       <div class="form-group col-md-6">
          <label for="Name">Phone Number:</label>
-        <input type="number" class="form-control" id="phone" >
+        <input type="number" class="form-control" id="phone">
       </div>
      <div class="form-group col-md-12">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email">
+        <label for="Email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email">
      </div>
      <div class="form-group col-md-12">
         <label for="Select">Are you a:</label>
@@ -74,24 +73,24 @@
      <fieldset class="form-group col-sm-12">
        <label for="radios">How Did You Hear About Us?</label>
         <div class="form-check form-check-inline">
-          <label for="radio" class="form-check-label">
-            <input type="radio" name="selection" class="form-check-input" id="radio1">Facebook
+          <label class="form-check-label">
+            <input type="radio" name="Facebook" class="form-check-input" id="radio1">Facebook
           </label>
-          <label for="radio" class="form-check-label">
-            <input type="radio" name="selection" class="form-check-input" id="radio2">Billboard
+          <label class="form-check-label">
+            <input type="radio" name="Billboard" class="form-check-input" id="radio2">Billboard
           </label>
-          <label for="radio" class="form-check-label">
-            <input type="radio" name="selection" class="form-check-input" id="radio3">Something Else
+          <label class="form-check-label">
+            <input type="radio" name="Something Else" class="form-check-input" id="radio3">Something Else
           </label>
-          <label for="radio" class="form-check-label">
-            <input type="radio" name="selection" class="form-check-input" id="radio4">Fourth Thing
+          <label class="form-check-label">
+            <input type="radio" name="Fourth Thing" class="form-check-input" id="radio4">Fourth Thing
           </label>
-      </div>
+        </div>
       <div class="form-group">
-          <button type="button" class="btn btn-default" onclick="submitForm()">Submit</button>
+          <!-- <button type="submit" class="btn btn-default" onclick="submitForm()">Submit</button> -->
+          <input type="submit" class="btn btn-default" value="Submit">
       </div>
     </fieldset>
-
    </form>
 
     <!-- External Javascript  -->
