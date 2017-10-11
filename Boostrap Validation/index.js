@@ -128,7 +128,7 @@
 
     function parseUrlForVariable() {
      var parameters = window.location.search.substring(1);
-     var splitParams = parameters.split('&');
-
-     document.getElementById('info').innerHTML = parameters;
-    }
+     var splitParams = parameters.split(/&|=/);
+    //  var spltParamSplits = splitParams.split('=');
+    document.getElementById('info').innerHTML = splitParams[0];
+     }
