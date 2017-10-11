@@ -130,5 +130,9 @@
      var parameters = window.location.search.substring(1);
      var splitParams = parameters.split(/&|=/);
     //  var spltParamSplits = splitParams.split('=');
-    document.getElementById('info').innerHTML = splitParams[0];
+    document.getElementById('userName').innerHTML = splitParams[1];
+    document.getElementById('userEmail').innerHTML = splitParams[3];
+    document.getElementById('userRadio').innerHTML = splitParams[5];
+    document.getElementById('userSelect').innerHTML = splitParams[6];
+
      }
